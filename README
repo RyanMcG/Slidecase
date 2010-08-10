@@ -1,0 +1,7 @@
+Descirption:
+This is a wordpress plugin.  It uses jQuery to animate and do the necessary ajax to dynamically pull images and content from the WordPress database.
+
+Current Version: 1.1
+
+Log:
+1.1	It works, but there maybe some room for improvement.  Using AJAX to dynamically add images to Carousel is a bit weird.
