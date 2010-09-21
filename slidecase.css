@@ -1,14 +1,15 @@
 .slc {
-	height:355px;
+	height: 248px;
 	width: 100%;
 	overflow: hidden;
+	position: relative;
 }
 
 .slc-data {
 	display: none;
 	}
 
-.slc img.attachment-slidecase-thumbnail {
+.slc img.wp-post-image {
 	overflow: hidden;
 	padding: 0;
 	margin: 0;
@@ -21,8 +22,9 @@
 	
 .slc-image-container {
 	width: 1000%;
-	height: 355px;
+	height: 248px;
 	overflow: hidden;
+	position: relative;
 	}
 	
 .slc-container , .slc-image-container{
@@ -66,11 +68,10 @@
 	cursor: pointer;
 	top: 83px;
 	left: 20px;
-	display: none;
 	}
 
 .slc-arrow.right {
-	background-image: url(right.png);
+	background: no-repeat url(right.png);
 	left: auto;
 	right: 20px;
 	}	

@@ -17,7 +17,6 @@ $j(document).ready(function ($) {
 	$j(".slc .slc-content").hide();
 	if($j(".slc").length > 0)
 	{
-		$(".slc .slc-arrow").fadeIn();
 		$(".slc .slc-container .slc-arrow").click(function () 
 		{
 			slc_select($(this).hasClass("right"), $(this).parents(".slc:eq(0)"));
@@ -50,7 +49,7 @@ function slc_init()		//Sets the default data and positions a few key elements.
 	{
 		middlepiece = pieces.first();
 		leftpos = 210;
-		$j(".slc .slc-image-container img.attachment-slidecase-thumbnail").css({left: leftpos});
+		$j(".slc .slc-image-container img.wp-post-image").css({left: leftpos});
 	}
 	
 	middlepiece.addClass("active").fadeIn();
@@ -141,7 +140,7 @@ function slc_loadMoreContent(next, callback)
 			{
 				leftpos = leftpos - 565;
 				slc.children(".slc-image-container").prepend(response);
-				slc.find("img.attachment-slidecase-thumbnail").css("left", leftpos+"px");
+				slc.find("img.wp-post-image").css("left", leftpos+"px");
 			}
 		}
 		querying_i = false;
@@ -198,7 +197,7 @@ function slc_select(next, slc)
 		{
 			slc_loadMoreContent(next, function ()
 			{
-				$j(".slc img.attachment-slidecase-thumbnail").animate({left: leftpos}, 500, "easeOutExpo");
+				$j(".slc img.wp-post-image").animate({left: leftpos}, 500, "easeOutExpo");
 			});
 		}
 		
@@ -208,7 +207,7 @@ function slc_select(next, slc)
 
 function slc_animateImages(next, slc, zoomtoend)
 {
-	var images = slc.find(".slc-image-container img.attachment-slidecase-thumbnail");
+	var images = slc.find(".slc-image-container img.wp-post-image");
 	images.css({left: leftpos});
 	var len = images.length;
 	var operator;
@@ -225,7 +224,7 @@ function slc_animateImages(next, slc, zoomtoend)
 		leftpos = leftpos + 565;
 		if(zoomtoend)
 		{
-			leftpos = (1-len)*562 + 210;
+			leftpos = (1-len)*565 + 210;
 		}
 	}
 

@@ -34,7 +34,7 @@ function setupSlidecase()
 		
 	if(!is_admin())	//If not in the admin page then add ajaxurl javascript variable to page.
 		wp_localize_script('slidecase', 'slidecase_stuff', array('ajaxurl' => admin_url('admin-ajax.php')));
-	add_image_size('slidecase-thumbnail', 535, 355, true);
+	add_image_size('slidecase-thumbnail', 535, 248, true);
 	if(!term_exists('showcase', 'category'))
 		wp_insert_term('Showcase', 'category', array(
 			'description' => 'Posts in this category appear in the header at the top of the home page.',
@@ -98,7 +98,7 @@ function placeSlidecasePictures($queries, $displayed = array(), $order)
 				}
 				else
 				{
-					the_post_thumbnail('slidecase-thumbnail');
+					the_post_thumbnail(array(535, 248));
 					array_push($displayed, 'slc_post_'.$query->post->ID);
 				}	
 			}
@@ -141,8 +141,21 @@ function placeSlidecaseContent($queries, $displayed, $order)
 
 					echo '
 					<div id="slc_post_'.$query->post->ID.'" class="slc-content" style="'.$style.'">';
-					the_title();
-					the_content('<span class="readmore">Read More</span>');
+					/*the_title();
+					the_content('<span class="readmore">Read More</span>');*/
+					$i = $query->post->ID % 3;
+					switch($i)
+					{
+						case 0:
+							echo '<center><strong>Our mission</strong><br /><em>Find solutions to the complicated problem of poverty in order to improve the lives of families and health of our communities</em></center>';
+							break;
+						case 1:
+							echo '<center><strong>Our mission</strong><br /><em>Cultivate interdisciplinary and trans-institutional research teams</em></center>';
+							break;
+						case 2:
+							echo '<center><strong>Our mission</strong><br /><em>Develop and evaluate comprehensive, culturally-sensitive models of community renaissance</em></center>';
+							break;						
+					}
 					echo '
 					</div>';
 					array_push($displayed, 'slc_post_'.$query->post->ID);
