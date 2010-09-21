@@ -34,7 +34,7 @@ function setupSlidecase()
 		
 	if(!is_admin())	//If not in the admin page then add ajaxurl javascript variable to page.
 		wp_localize_script('slidecase', 'slidecase_stuff', array('ajaxurl' => admin_url('admin-ajax.php')));
-	add_image_size('slidecase-thumbnail', 535, 248, true);
+	add_image_size('slidecase-slim-thumbnail', 535, 248, true);
 	if(!term_exists('showcase', 'category'))
 		wp_insert_term('Showcase', 'category', array(
 			'description' => 'Posts in this category appear in the header at the top of the home page.',
@@ -98,7 +98,7 @@ function placeSlidecasePictures($queries, $displayed = array(), $order)
 				}
 				else
 				{
-					the_post_thumbnail(array(535, 248));
+					the_post_thumbnail('slidecase-slim-thumbnail');
 					array_push($displayed, 'slc_post_'.$query->post->ID);
 				}	
 			}
